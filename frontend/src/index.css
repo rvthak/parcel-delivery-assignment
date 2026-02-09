@@ -1,0 +1,489 @@
+/* ==========================================================================
+   Skroutz Last Mile — Brand Design System
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Custom Properties
+   -------------------------------------------------------------------------- */
+
+:root {
+  /* Brand colors */
+  --color-primary: #F68B24;
+  --color-primary-hover: #E07A15;
+  --color-primary-light: #FFF3E6;
+  --color-secondary: #363636;
+  --color-secondary-light: #4A4A4A;
+
+  /* Neutrals */
+  --color-white: #FFFFFF;
+  --color-gray-50: #FAFAFA;
+  --color-gray-100: #F5F5F5;
+  --color-gray-200: #EEEEEE;
+  --color-gray-300: #E0E0E0;
+  --color-gray-400: #BDBDBD;
+  --color-gray-500: #9E9E9E;
+  --color-gray-600: #757575;
+  --color-gray-700: #616161;
+  --color-gray-800: #424242;
+  --color-gray-900: #212121;
+
+  /* Semantic colors */
+  --color-success: #2E7D32;
+  --color-success-bg: #E8F5E9;
+  --color-success-border: #A5D6A7;
+  --color-error: #C62828;
+  --color-error-bg: #FFEBEE;
+  --color-error-border: #EF9A9A;
+  --color-warning: #F57F17;
+  --color-warning-bg: #FFF8E1;
+  --color-warning-border: #FFE082;
+
+  /* Typography */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+
+  /* Spacing */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+
+  /* Border radius */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.1);
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-normal: 200ms ease;
+
+  /* Layout */
+  --sidebar-width: 240px;
+}
+
+
+/* --------------------------------------------------------------------------
+   2. Reset & Base
+   -------------------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-normal);
+  color: var(--color-secondary);
+  background-color: var(--color-gray-100);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+/* --------------------------------------------------------------------------
+   3. Typography
+   -------------------------------------------------------------------------- */
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-gray-900);
+}
+
+.page-title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-6);
+  color: var(--color-gray-900);
+}
+
+
+/* --------------------------------------------------------------------------
+   4. Layout
+   -------------------------------------------------------------------------- */
+
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.app-main {
+  flex: 1;
+  padding: var(--space-10);
+  background-color: var(--color-gray-100);
+  min-width: 0;
+}
+
+
+/* --------------------------------------------------------------------------
+   5. Sidebar
+   -------------------------------------------------------------------------- */
+
+.sidebar {
+  width: var(--sidebar-width);
+  min-height: 100vh;
+  background-color: var(--color-secondary);
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+}
+
+.sidebar-header {
+  padding: var(--space-6) var(--space-5);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  border-bottom: 1px solid var(--color-secondary-light);
+}
+
+.sidebar-logo {
+  height: 28px;
+  width: auto;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-3) 0;
+}
+
+.sidebar-link {
+  display: block;
+  padding: var(--space-3) var(--space-5);
+  color: var(--color-gray-400);
+  text-decoration: none;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  border-left: 3px solid transparent;
+  transition: color var(--transition-fast),
+              background-color var(--transition-fast),
+              border-color var(--transition-fast);
+}
+
+.sidebar-link:hover {
+  color: var(--color-white);
+  background-color: var(--color-secondary-light);
+}
+
+.sidebar-link.active {
+  color: var(--color-white);
+  background-color: rgba(246, 139, 36, 0.12);
+  border-left-color: var(--color-primary);
+}
+
+
+/* --------------------------------------------------------------------------
+   6. Cards
+   -------------------------------------------------------------------------- */
+
+.card {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-gray-200);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--transition-normal);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.card-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+
+/* --------------------------------------------------------------------------
+   7. Forms
+   -------------------------------------------------------------------------- */
+
+.form {
+  max-width: 480px;
+}
+
+.form-group {
+  margin-bottom: var(--space-5);
+}
+
+.form-label {
+  display: block;
+  margin-bottom: var(--space-1);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-gray-800);
+}
+
+.form-input {
+  width: 100%;
+  padding: var(--space-2) var(--space-3);
+  font-family: inherit;
+  font-size: var(--font-size-base);
+  color: var(--color-gray-900);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-gray-300);
+  border-radius: var(--radius-md);
+  outline: none;
+  transition: border-color var(--transition-fast),
+              box-shadow var(--transition-fast);
+}
+
+.form-input::placeholder {
+  color: var(--color-gray-400);
+}
+
+.form-input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(246, 139, 36, 0.15);
+}
+
+
+/* --------------------------------------------------------------------------
+   8. Buttons
+   -------------------------------------------------------------------------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-2) var(--space-6);
+  font-family: inherit;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-normal);
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background-color var(--transition-fast),
+              box-shadow var(--transition-fast),
+              transform var(--transition-fast);
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-hover);
+}
+
+.btn-danger {
+  background-color: var(--color-error);
+  color: var(--color-white);
+}
+
+.btn-danger:hover {
+  background-color: #B71C1C;
+}
+
+
+/* --------------------------------------------------------------------------
+   9. Banners / Alerts
+   -------------------------------------------------------------------------- */
+
+.banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  border-width: 1px;
+  border-style: solid;
+  margin-bottom: var(--space-5);
+  font-size: var(--font-size-sm);
+}
+
+.banner-success {
+  background-color: var(--color-success-bg);
+  color: var(--color-success);
+  border-color: var(--color-success-border);
+}
+
+.banner-error {
+  background-color: var(--color-error-bg);
+  color: var(--color-error);
+  border-color: var(--color-error-border);
+}
+
+.banner-warning {
+  background-color: var(--color-warning-bg);
+  color: var(--color-warning);
+  border-color: var(--color-warning-border);
+}
+
+.banner-close {
+  background: none;
+  border: none;
+  font-size: var(--font-size-lg);
+  cursor: pointer;
+  color: inherit;
+  padding: 0 var(--space-1);
+  opacity: 0.7;
+  transition: opacity var(--transition-fast);
+}
+
+.banner-close:hover {
+  opacity: 1;
+}
+
+
+/* --------------------------------------------------------------------------
+   10. Warning Box
+   -------------------------------------------------------------------------- */
+
+.warning-box {
+  background-color: var(--color-warning-bg);
+  color: var(--color-warning);
+  border: 1px solid var(--color-warning-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  margin-bottom: var(--space-6);
+  max-width: 480px;
+  font-weight: var(--font-weight-semibold);
+}
+
+
+/* --------------------------------------------------------------------------
+   11. Driver Status Cards
+   -------------------------------------------------------------------------- */
+
+.driver-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-5);
+}
+
+.driver-name {
+  font-weight: var(--font-weight-bold);
+  min-width: 80px;
+  color: var(--color-gray-900);
+}
+
+.driver-stat {
+  color: var(--color-gray-600);
+  font-size: var(--font-size-sm);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  white-space: nowrap;
+}
+
+.badge-success {
+  background-color: var(--color-success);
+  color: var(--color-white);
+}
+
+
+/* --------------------------------------------------------------------------
+   12. Responsive
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 768px) {
+  :root {
+    --sidebar-width: 200px;
+  }
+
+  .app-main {
+    padding: var(--space-6);
+  }
+
+  .page-title {
+    font-size: var(--font-size-xl);
+  }
+
+  .driver-card {
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+}
+
+@media (max-width: 480px) {
+  .app-layout {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    min-height: auto;
+    position: static;
+  }
+
+  .sidebar-nav {
+    flex-direction: row;
+    overflow-x: auto;
+  }
+
+  .sidebar-link {
+    border-left: none;
+    border-bottom: 3px solid transparent;
+    white-space: nowrap;
+    text-align: center;
+  }
+
+  .sidebar-link.active {
+    border-left-color: transparent;
+    border-bottom-color: var(--color-primary);
+  }
+
+  .app-main {
+    padding: var(--space-4);
+  }
+}
