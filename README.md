@@ -156,11 +156,13 @@ docker compose up --build
 
 ## Assumptions
 
-- When multiple drivers exist in the same cluster, the first one found is assigned (LIMIT 1)
-- The frontend proxies API calls through nginx to avoid CORS issues in production; the backend still has CORS enabled for flexibility
-- SSE connections are established per-driver and cleaned up on component unmount
-- Postcode validation is done client-side before the API call; the backend also validates against available clusters
+- The assignment of a package to a driver is done at the time of the package creation, based on the current snapshot of the system (mapping between clusters/postcodes), since the provided problem is static. In a real world scenario, I would expect the match between cluster and postcodes to be dynamic, to allow realocation of resources according to varying workload. In that scenario, the problem becomes substantially more interesting and complex and we probably need some kind of custom heuristic to properly optimize it.
+- I didnt add any user authentication, unit/integration tests, linter or prettier  since they were not explicitly requested, so I focused my energy towards the specific scope set by the assignment.
+- When multiple drivers exist in the same cluster, the first one found is assigned (doesn't apply to our current dataset since the drivers are supposed to be immutable at the current setup)
+- I chose to use SSE as a simple solution for the basic needs of this assignment (one way live communication). I chose to create a single connection per driver so that only the data for one driver gets sent whenever something changes, instead of sending all of the data for all drivers every time (every time you have to send the data you have to make some queries/calculations so it would be a big waste of resources at scale). Creating a connection for each driver has its own issues as well (too many open connections can slow down the servers) but with a proper connection pooling setup (+maybe the addition of pagination on the front end to limit the max connections needed) I feel like it would scale better (althoug none of this really matters for the needs of this assignment)
+- My setup has a "development" setup that allows hot reload and easy debugging in order to iterate fast during development and a "basic production" setup that just packs everything into a docker container to be easily and reliably shipped and deployed.
+
 
 ## AI Prompts Used
 
-This project was built with AI assistance (Claude) using the full specification document as the prompt. The implementation was generated based on the detailed technical specification provided.
+This project was built with AI assistance (Claude) using the full specification document as the prompt. The implementation was generated based on the detailed technical specification provided. (You can read my design draft on SPECIFICATION.md)
