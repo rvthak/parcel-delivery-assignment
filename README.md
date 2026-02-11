@@ -1,6 +1,7 @@
 # Last-Mile Dispatch Dashboard
 
 A full-stack prototype for a courier company's last-mile parcel sorting system. Manages package creation, warehouse scanning, driver assignment based on delivery postcodes, and real-time readiness tracking.
+<img width="1263" height="703" alt="image" src="https://github.com/user-attachments/assets/1e883606-fd72-4ec5-a52b-dbd49824fa52" />
 
 ## Prerequisites
 
