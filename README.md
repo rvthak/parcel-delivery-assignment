@@ -162,7 +162,12 @@ docker compose up --build
 - I chose to use SSE as a simple solution for the basic needs of this assignment (one way live communication). I chose to create a single connection per driver so that only the data for one driver gets sent whenever something changes, instead of sending all of the data for all drivers every time (every time you have to send the data you have to make some queries/calculations so it would be a big waste of resources at scale). Creating a connection for each driver has its own issues as well (too many open connections can slow down the servers) but with a proper connection pooling setup (+maybe the addition of pagination on the front end to limit the max connections needed) I feel like it would scale better (althoug none of this really matters for the needs of this assignment)
 - My setup has a "development" setup that allows hot reload and easy debugging in order to iterate fast during development and a "basic production" setup that just packs everything into a docker container to be easily and reliably shipped and deployed.
 
+## Work process
+1. Read the assignment and spent some time to draw out a draft scetch of the needed systems on excalidraw (users/views/endpoints/db schema)
+<img width="1174" height="610" alt="image" src="https://github.com/user-attachments/assets/d037c6e2-0a8d-47f0-86c2-bf7a105d3300" />
 
-## AI Prompts Used
+2. Wrote down a large prompt describing my drawing's architecture and requirements (see [SPECIFICATION.md](./SPECIFICATION.md))
+3. Prompted claude code to implement a first draft of my proposed system.
+4. I reviewed the model's work, manually made small tweaks/corrections (refined the UI, removed magic numbers and hardcoded fallbacks that could make errors silent, styled the UI to follow Skroutz's identity, fixed console warnings etc) and iterated on that until I was happy with the overall result. I had claude code reviewing its own code in every step and judging what was needed or what was too much. I commited between every individual change I made and could always go back to a working version if something went wrong, in the end I squashed all the commits to remove the unneded details and have a clean "alpha" release of the app. (I usually like to have each feature be its own single commit so I squash all the sub commits, this helps with cherry picking/rolling things back and keeping the commit list clean and readable on the long term).
+Note: I havent kept all individual prompts that I have used to fine tune the results since they are quite a few of them but I can easily describe my work process in more depth if youre interested)
 
-This project was built with AI assistance (Claude) using the full specification document as the prompt. The implementation was generated based on the detailed technical specification provided. (You can read my design draft on SPECIFICATION.md)
